@@ -8,9 +8,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "/" },
     { name: "Recipes", href: "#recipes" },
-    { name: "How To", href: "#how-to" },
+    { name: "How To Mix", href: "#how-to" },
+    { name: "Guides", href: "#" },
     { name: "FAQ", href: "#faq" },
   ];
 
@@ -20,21 +20,26 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
             <FlaskRound className="w-8 h-8 text-[#FFC107]" />
-            <span className="text-xl font-bold text-[#FFC107]">Schedule1mix</span>
+            <span className="text-xl font-bold text-[#FFC107]">Schedule 1 Mix</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-[#FFECB3] hover:text-[#FFC107] transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex-1 flex justify-center">
+            <nav className="hidden md:flex space-x-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-[#FFECB3] hover:text-[#FFC107] transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Empty div to maintain spacing */}
+          <div className="w-[120px] md:block hidden"></div>
 
           {/* Mobile Menu Button */}
           <button

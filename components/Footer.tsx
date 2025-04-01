@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center space-x-2">
               <FlaskRound className="w-6 h-6 text-[#FFC107]" />
-              <span className="text-lg font-bold text-[#FFC107]">Schedule1mix</span>
-            </div>
+              <span className="text-lg font-bold text-[#FFC107]">Schedule 1 Mix</span>
+            </Link>
             <p className="text-[#FFECB3]/80">Your ultimate guide to mixing in Schedule 1</p>
           </div>
 
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-[#FFC107]/10 text-center text-[#FFECB3]/60">
-          <p>&copy; {new Date().getFullYear()} Schedule1mix. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Schedule1Mix. All rights reserved.</p>
         </div>
       </div>
     </footer>
