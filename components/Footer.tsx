@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#1A2526] border-t border-[#FFC107]/10">
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
@@ -32,6 +32,7 @@ export default function Footer() {
                   FAQ
                 </Link>
               </li>
+
             </ul>
           </div>
 
@@ -57,19 +58,26 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-[#FFC107] mb-4">Connect</h3>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-[#FFECB3]/80 hover:text-[#FFC107] transition-colors">
-                <Twitter className="w-6 h-6" />
-              </Link>
-              <Link href="#" className="text-[#FFECB3]/80 hover:text-[#FFC107] transition-colors">
-                <Github className="w-6 h-6" />
-              </Link>
-            </div>
+            <h3 className="font-semibold text-[#FFC107] mb-4">Policies</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/privacy-policy" className="text-[#FFECB3]/80 hover:text-[#FFC107] transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms-of-service" className="text-[#FFECB3]/80 hover:text-[#FFC107] transition-colors">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
-
-        <div className="mt-12 pt-8 border-t border-[#FFC107]/10 text-center text-[#FFECB3]/60">
+       
+        <div className="mt-6 border-t border-[#FFC107]/10 text-center text-[#FFECB3]/60">
+        <p className="text-sm">
+        This is a fan project and not affiliated with Schedule I.
+        </p>
           <p>&copy; {new Date().getFullYear()} Schedule1Mix. All rights reserved.</p>
         </div>
       </div>

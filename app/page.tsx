@@ -2,8 +2,6 @@
 import Image from "next/image";
 import { ChevronDown, Beaker, DollarSign, Brain, HelpCircle } from "lucide-react";
 import { useState } from "react";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -46,8 +44,6 @@ export default function Home() {
 
   return (
     <>
-      <Header />
-      <div className="min-h-screen bg-[#1A2526] text-[#FFECB3]">
         {/* Hero Section */}
         <section className="relative h-screen flex items-center px-4">
           <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-8">
@@ -70,7 +66,7 @@ export default function Home() {
         </section>
 
         {/* What Section */}
-        <section className="py-20 bg-[#3A3F47]" id="what">
+        <section className="py-20" id="what">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-4xl font-bold mb-16 text-center text-[#FFC107]">What is Mixing in Schedule 1?</h2>
 
@@ -156,9 +152,9 @@ export default function Home() {
         </section>
 
         {/* Top Recipes Section */}
-        <section className="py-20 bg-[#3A3F47]" id="recipes">
+        <section className="py-20 " id="recipes">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-16 text-center text-[#FFC107]">Top Schedule 1  Mixing Recipes</h2>
+            <h2 className="text-4xl font-bold mb-16 text-center text-[#FFC107]">Top Schedule 1  Mix Recipes</h2>
 
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -215,9 +211,7 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
-      </div>
-      <Footer />
+        </section> 
     </>
   );
 }

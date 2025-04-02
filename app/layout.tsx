@@ -2,6 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +19,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} min-h-screen bg-[#3A3F47] text-[#FFECB3]`}>
+        <Header />
+        <main>
+        {children}
+        </main>
+        <Footer />
+      </body>
       <GoogleAnalytics gaId="G-4EE9C2J7NN" />
     </html>
   );
