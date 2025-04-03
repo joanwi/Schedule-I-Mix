@@ -10,16 +10,28 @@ export default function Home() {
 
   const faqs = [
     {
-      question: "How do I unlock the mixing station?",
-      answer: "You need to reach Hoodlum 1 level and purchase it from Dan's Hardware for $500."
+      question: "How do I unlock the Mixing Station in Schedule 1?",
+      answer: "To unlock the Mixing Station, reach Hoodlum 1 rank. Then, head to Dan’s Hardware Store and buy it for $500. It’s your starting point for crafting mixes like OG Kush with Cuke to boost profits early on."
     },
     {
       question: "Where can I find Substances?",
       answer: "Basic ingredients can be found at gas stations, including Bananas, Coke, and Mega Bean."
     },
     {
-      question: "How does mixing work?",
-      answer: "Combine base drugs with ingredients, then package them for sale. Different combinations yield different effects and profits."
+      question: "Which ingredients make the most profitable mixes?",
+      answer: "Top ingredients for high-profit mixes include Horse Semen, Mega Bean, and Battery. For example, the Meth mix (Banana, Cuke, Paracetamol, Gasoline, Battery, Horse Semen, Mega Bean) costs $38 and sells for $340, netting $302 profit. Experiment with these for big returns."
+    },
+    {
+      question: "How do mix effects impact gameplay in Schedule 1?",
+      answer: "Effects shape NPC demand and profits. Glowing (e.g., OG Kush mix, $164) draws premium buyers, while Zombifying (e.g., Meth, $340) hooks repeat customers. Sedating effects (e.g., Granddaddy Purple, $154) suit chill NPCs—match effects to market needs."
+    },
+    {
+      question: "How can I calculate costs and selling prices for max profit?",
+      answer: "Add up ingredient costs (e.g., Meth at $38) and estimate selling price with tools like the Mixing Calculator. It sells for $340, giving a $302 profit. Test prices in-game and tweak based on NPC feedback to stay profitable."
+    },
+    {
+      question: "Why aren’t my mixes selling, and how do I boost sales?",
+      answer: "Mixes might not sell if prices are too high (e.g., OG Kush at $80 shouldn’t exceed $200) or effects don’t appeal. Add popular effects like Glowing with Horse Semen, or try hot recipes like Ice Cream Slime ($275+) to attract buyers."
     }
   ];
 
@@ -227,7 +239,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto px-4">
             <h2 className="text-4xl font-bold mb-16 text-center text-[#FFC107]">
               <HelpCircle className="w-12 h-12 mb-4 mx-auto" />
-              Frequently Asked Questions
+              Schedule 1 Mix FAQ
             </h2>
 
             <div className="space-y-4">
@@ -240,7 +252,7 @@ export default function Home() {
                     className="w-full p-4 text-left flex justify-between items-center"
                     onClick={() => setActiveFaq(activeFaq === index ? null : index)}
                   >
-                    <span className="font-semibold">{faq.question}</span>
+                    <h3 className="font-semibold text-xl text-[#FFC107]">{faq.question}</h3>
                     <ChevronDown className={`w-5 h-5 transition-transform ${activeFaq === index ? 'rotate-180' : ''}`} />
                   </button>
                   {activeFaq === index && (
