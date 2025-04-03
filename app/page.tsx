@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { ChevronDown, Beaker, DollarSign, Brain, HelpCircle } from "lucide-react";
 import { useState } from "react";
+import { recipes } from "@/lib/recipes";
+
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -21,26 +23,48 @@ export default function Home() {
     }
   ];
 
-  const recipes = [
-    {
-      name: "Miracle Mix",
-      ingredients: "Sour Diesel, Flu Medicine (x2), Energy Drink, Chili, Mouthwash, Banana, Iodine, Horsemen",
-      cost: "~$200",
-      effects: "Popular, NPC favorite, high profit"
-    },
-    {
-      name: "Wedding Slime",
-      ingredients: "Paramol → Cuke → Paramol → Gasoline → Cuke → Mega Bean → Battery",
-      cost: "$200+",
-      effects: "Alien skin + antigravity, early-game goldmine"
-    },
-    {
-      name: "Green C Mix",
-      ingredients: "Chili → Banana → The V Pill (Viag.) → Minty Stuff → Horsemen → Focus Drops → Motor Juice",
-      cost: "$165+",
-      effects: "Electric shock, flames, chaotic vision"
+
+
+  const [sortConfig, setSortConfig] = useState<{
+    key: 'cost' | 'sellingPrice' | 'profit';
+    direction: 'ascending' | 'descending';
+  } | null>(null);
+
+  const sortedRecipes = [...recipes].sort((a, b) => {
+    if (!sortConfig) return 0;
+    
+    const getValue = (recipe: typeof recipes[0], key: typeof sortConfig.key) => {
+      if (key === 'profit') {
+        const cost = recipe.cost === '-' ? 0 : Number(recipe.cost);
+        return recipe.sellingPrice - cost;
+      }
+      return key === 'cost' && recipe.cost === '-' ? 0 : Number(recipe[key]);
+    };
+    
+    const aValue = getValue(a, sortConfig.key);
+    const bValue = getValue(b, sortConfig.key);
+    
+    if (aValue < bValue) {
+      return sortConfig.direction === 'ascending' ? -1 : 1;
     }
-  ];
+    if (aValue > bValue) {
+      return sortConfig.direction === 'ascending' ? 1 : -1;
+    }
+    return 0;
+  });
+
+  const requestSort = (key: 'cost' | 'sellingPrice' | 'profit') => {
+    let direction: 'ascending' | 'descending' = 'ascending';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
+    }
+    setSortConfig({ key, direction });
+  };
+
+  const getSortIcon = (key: 'cost' | 'sellingPrice' | 'profit') => {
+    if (!sortConfig || sortConfig.key !== key) return '↕️';
+    return sortConfig.direction === 'ascending' ? '↑' : '↓';
+  };
 
   return (
     <>
@@ -50,7 +74,12 @@ export default function Home() {
             <div className="md:w-1/2 text-left">
               <h1 className="text-5xl font-bold mb-6 text-[#FFC107]">Welcome to Schedule 1 Mix</h1>
               <p className="text-2xl mb-8">Master the art of mixing in Schedule 1</p>
-              <ChevronDown className="w-8 h-8 animate-bounce hidden md:block" />
+              <ChevronDown 
+                className="w-8 h-8 animate-bounce hidden md:block cursor-pointer hover:text-[#FFC107] transition-colors" 
+                onClick={() => {
+                  document.getElementById('what')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              />
             </div>
             <div className="md:w-1/2 aspect-video w-full">
               <iframe
@@ -75,7 +104,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-semibold mb-4">Mixing Guide</h3>
-                  <p className="text-lg">Get the lowdown on mixing in Schedule 1 with our detailed guides! We’ll help you nail the mixing mechanics like a pro.</p>
+                  <p className="text-lg">Get the lowdown on mixing in Schedule 1 with our detailed guides! We'll help you nail the mixing mechanics like a pro.</p>
                 </div>
                 <div className="md:w-1/2">
                   <Image
@@ -91,7 +120,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row-reverse items-center gap-8">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-semibold mb-4">Special Recipes</h3>
-                  <p className="text-lg">We’ve got exclusive drug variant recipes up our sleeve! Unlock these unique formulas with smart mixing and get a leg up on the competition in the Schedule 1.</p>
+                  <p className="text-lg">We've got exclusive drug variant recipes up our sleeve! Unlock these unique formulas with smart mixing and get a leg up on the competition in the Schedule 1.</p>
                 </div>
                 <div className="md:w-1/2">  
                   <Image
@@ -107,7 +136,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-semibold mb-4">Maximize Profits</h3>
-                  <p className="text-lg">Learn how to mix substances to whip up high-value products. With our tips, you’ll rule the market and rake in the biggest earnings in Schedule 1!</p>
+                  <p className="text-lg">Learn how to mix substances to whip up high-value products. With our tips, you'll rule the market and rake in the biggest earnings in Schedule 1!</p>
                 </div>
                 <div className="md:w-1/2">
                   <Image
@@ -152,27 +181,39 @@ export default function Home() {
         </section>
 
         {/* Top Recipes Section */}
-        <section className="py-20 " id="recipes">
+        <section className="py-20" id="recipes">
           <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-16 text-center text-[#FFC107]">Top Schedule 1  Mix Recipes</h2>
-
+            <h2 className="text-4xl font-bold mb-8 text-center text-[#FFC107]">Top Schedule 1 Mix Recipes</h2>
+             <p className="text-center">These are the top recipes for Schedule 1 mix. Click on the column headers to sort by cost, selling price, or profit.</p>
+             <p className="text-center">Note: Costs and selling prices are approximate and may vary based on game updates.</p>
+             <p className="text-right font-bold text-sm text-[#FFC107]/70 my-2 pr-20">Last update: April 2, 2025</p>
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full table-fixed">
                 <thead>
                   <tr className="border-b border-[#FFC107]/20">
-                    <th className="text-left p-4">Mix Name</th>
-                    <th className="text-left p-4">Substances</th>
-                    <th className="text-left p-4">Cost/Selling Price</th>
-                    <th className="text-left p-4">Effects/Details</th>
+                    <th className="text-left p-4 w-[200px]">Mix Name</th>
+                    <th className="text-left p-4 w-[300px]">Substances</th>
+                    <th className="text-left p-4 w-[100px] cursor-pointer hover:text-[#FFC107] transition-colors" onClick={() => requestSort('cost')}>
+                      Cost ${getSortIcon('cost')}
+                    </th>
+                    <th className="text-left p-4 w-[100px] cursor-pointer hover:text-[#FFC107] transition-colors" onClick={() => requestSort('sellingPrice')}>
+                      Selling ${getSortIcon('sellingPrice')}
+                    </th>
+                    <th className="text-left p-4 w-[100px] cursor-pointer hover:text-[#FFC107] transition-colors" onClick={() => requestSort('profit')}>
+                      Profit ${getSortIcon('profit')}
+                    </th>
+                    <th className="text-left p-4 w-[300px]">Effects/Details</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {recipes.map((recipe, index) => (
+                  {sortedRecipes.map((recipe, index) => (
                     <tr key={index} className="border-b border-[#FFC107]/20">
-                      <td className="p-4">{recipe.name}</td>
-                      <td className="p-4">{recipe.ingredients}</td>
-                      <td className="p-4">{recipe.cost}</td>
-                      <td className="p-4">{recipe.effects}</td>
+                      <td className="p-2 truncate">{recipe.name}</td>
+                      <td className="p-2 whitespace-pre-wrap break-words">{recipe.ingredients}</td>
+                      <td className="p-2">${recipe.cost}</td>
+                      <td className="p-2">${recipe.sellingPrice}</td>
+                      <td className="p-2">${recipe.cost === '-' ? recipe.sellingPrice : recipe.sellingPrice - Number(recipe.cost)}</td>
+                      <td className="p-2 whitespace-pre-wrap break-words">{recipe.effects}</td>
                     </tr>
                   ))}
                 </tbody>
