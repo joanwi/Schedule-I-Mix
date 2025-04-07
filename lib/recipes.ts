@@ -136,17 +136,67 @@ export const recipes = [
     effects: "Top profit, endgame cash cow, requires most effort to prepare"
   },
   {
-    "name": "Cocaine Premium",
-    "ingredients": "Motor Oil, Cuke, Paracetamol, Gasoline, Cuke, Battery, Horse Semen, Mega Bean",
-    "cost": 42,
-    "sellingPrice": 735,
-    "effects": "Anti-gravity, glowing, tropical storm, zombification, one eye, bright eyes, long face, foggy"
+    id: 18,
+    name: "OG Kush Mix A",
+    ingredients: "Donut, Mouth Wash, Cuke, Banana, Viagra, Flu Medicine",
+    cost: 24,
+    sellingPrice: 127,
+    effects: "Anti-Gravity, Jennerising, Balding, Thought-Provoking, Gingeritis, Tropic Thunder, Sedating"
   },
   {
-    "name": "Cocaine Standard",
-    "ingredients": "Banana, Cuke, Paracetamol, Gasoline, Cuke, Battery, Horse Semen, Mega Bean",
-    "cost": 38,
-    "sellingPrice": 729,
-    "effects": "Electric shock, glowing, tropical storm, zombification, one eye, bright eyes, long face, foggy"
+    id: 19,
+    name: "OG Kush Mix B",
+    ingredients: "Donut, Mouth Wash, Cuke, Banana, Viagra",
+    cost: 17,
+    sellingPrice: 118,
+    effects: "Anti-Gravity, Jennerising, Balding, Thought-Provoking, Gingeritis, Tropic Thunder"
+  },
+  {
+    id: 20,
+    name: "OG Kush Mix D",
+    ingredients: "Mouth Wash, Cuke, Viagra, Banana",
+    cost: 11,
+    sellingPrice: 103,
+    effects: "Anti-Gravity, Balding, Thought-Provoking, Tropic Thunder, Gingeritis"
+  },
+  {
+    id: 21,
+    name: "Green Crack Mix A",
+    ingredients: "Viagra, Horse Semen",
+    cost: 13,
+    sellingPrice: 77,
+    effects: "Energizing, Tropic Thunder, Long Faced"
+  },
+  {
+    id: 22,
+    name: "Green Crack Mix B",
+    ingredients: "Gasoline, Viagra",
+    cost: 13,
+    sellingPrice: 65,
+    effects: "Bright-Eyed, Toxic, Tropic Thunder"
+  },
+  {
+    id: 23,
+    name: "Sour Diesel Mix A",
+    ingredients: "Cuke, Flu Medicine, Banana",
+    cost: 9,
+    sellingPrice: 71,
+    effects: "Refreshing, Thought-Provoking, Sedating, Gingeritis"
+  },
+  {
+    id: 24,
+    name: "Sour Diesel Mix B",
+    ingredients: "Cuke, Flu Medicine, Mega Bean",
+    cost: 15,
+    sellingPrice: 81,
+    effects: "Refreshing, Cyclopean, Sedating, Foggy"
+  },
+  {
+    id: 25,
+    name: "Simple OG Kush Mix",
+    ingredients: "Paracetamol, Viagra, Horse Semen",
+    cost: 15,
+    sellingPrice: 109,
+    effects: "Slippery, Bright-Eyed, Tropic Thunder, Spicy, Long Faced"
   }
 ];

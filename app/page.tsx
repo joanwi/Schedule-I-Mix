@@ -198,7 +198,7 @@ export default function Home() {
             <h2 className="text-4xl font-bold mb-8 text-center text-[#FFC107]">Top Schedule 1 Mix Recipes</h2>
              <p className="text-center">These are the top recipes for Schedule 1 mix. Click on the column headers to sort by cost, selling price, or profit.</p>
              <p className="text-center">Note: Costs and selling prices are approximate and may vary based on game updates.</p>
-             <p className="text-right font-bold text-sm text-[#FFC107]/70 my-2 pr-20">Last update: April 2, 2025</p>
+             <p className="text-right font-bold text-sm text-[#FFC107]/70 my-2 pr-20">Last update: April 7, 2025</p>
             <div className="overflow-x-auto">
               <table className="w-full table-fixed">
                 <thead>
