@@ -1,6 +1,6 @@
-import { FlaskRound, Github, Twitter } from "lucide-react";
+import { Github, Twitter } from "lucide-react";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-[#1A2526] border-t border-[#FFC107]/10">
@@ -8,7 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <FlaskRound className="w-6 h-6 text-[#FFC107]" />
+            <Image
+              src="/LOGO-Schedule-1-Mix.png"
+              alt="Schedule 1 Mix Logo"
+              width={40}
+              height={40}
+              className="w-auto h-8"
+            />
               <span className="text-lg font-bold text-[#FFC107]">Schedule 1 Mix</span>
             </Link>
             <p className="text-[#FFECB3]/80">Your ultimate guide to mixing in Schedule 1</p>

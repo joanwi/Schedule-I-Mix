@@ -1,8 +1,9 @@
 "use client";
 
-import { Menu, X, FlaskRound } from "lucide-react";
+import { Menu, X, } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,13 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center space-x-2">
-            <FlaskRound className="w-8 h-8 text-[#FFC107]" />
+            <Image
+              src="/LOGO-Schedule-1-Mix.png"
+              alt="Schedule 1 Mix Logo"
+              width={40}
+              height={40}
+              className="w-auto h-8"
+            />
             <span className="text-xl font-bold text-[#FFC107]">Schedule 1 Mix</span>
           </Link>
 
